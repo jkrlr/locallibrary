@@ -1,6 +1,5 @@
 from django.db import models
-# Used to generate URLs by reversing the URL patterns
-from django.urls import reverse
+from django.urls import reverse     # Used to generate URLs by reversing the URL patterns
 import uuid                        # Required for unique book instances
 from datetime import date
 # Required to assign User as a borrower
@@ -108,7 +107,7 @@ class Author(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     date_of_birth = models.DateField(null=True, blank='True')
-    date_of_death = models.DateField(null=True, blank='True')
+    date_of_death = models.DateField('Died',null=True, blank='True')
 
     class Meta:
         ordering = ['last_name', 'first_name']
