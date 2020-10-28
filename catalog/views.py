@@ -1,9 +1,8 @@
-from django.http import request
+from django.http import request, Http404
 from django.shortcuts import render
 from catalog.models import Book, Author, BookInstance, Genre
 from django.views import generic
 from django.shortcuts import get_object_or_404
-from django.shortcut import Http404
 
 # Create your views here.
 
