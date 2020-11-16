@@ -56,7 +56,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'templates'),      
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -123,3 +123,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 SESSION_SAVE_EVERY_REQUEST = True
+
+# Redirect to home URL after login (Defaul redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL= '/'
+
+
+# EMAIL_BACKEND= 'django.core.mail.backends.console.EmailBackend'
