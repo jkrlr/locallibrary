@@ -3,7 +3,7 @@ from django.urls import reverse     # Used to generate URLs by reversing the URL
 import uuid                        # Required for unique book instances
 from datetime import date
 # Required to assign User as a borrower
-from django.contrib.auth.models import Permission, User
+from django.contrib.auth.models import User
 # Create your models here.
 
 
@@ -95,7 +95,7 @@ class BookInstance(models.Model):
 
     class Meta:
         ordering = ['due_back']
-        permissions = (("can_mark_as_returned", "Set book as returned"),)
+        permissions = (("can_mark_returned", "Set book as returned"),)
 
     def __str__(self):
         """String for representing the Model object."""
