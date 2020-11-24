@@ -53,6 +53,9 @@ class Book(models.Model):
 
     display_genre.short_description = 'Genre'
 
+    class Meta:
+        permissions = (("can_create_book", "Create Book"),("can_delete_book", "Delete Book"),)
+
     def get_absolute_url(self):
         """Returns the url to acces a detail record for this book."""
         return reverse('book-detail', args=[str(self.id)])
