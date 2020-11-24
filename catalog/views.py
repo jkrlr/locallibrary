@@ -149,15 +149,18 @@ def renew_book_librarian(request, pk):
 
 # generic editing view(create, update, delete) of Author
 
-class AuthorCreate(CreateView):
+class AuthorCreate(PermissionRequiredMixin, CreateView):
     model=Author
+    permission_required='catalog.can_create_author'
     fields='__all__'
     initial={'date_of_death': '08/04/2025'}
 
-class AuthorUpdate(UpdateView):
+class AuthorUpdate(PermissionRequiredMixin, UpdateView):
     model=Author
+    permission_required='catalog.can_create_author'
     fields=['first_name', 'last_name', 'date_of_birth', 'date_of_death']
 
-class AuthorDelete(DeleteView):
+class AuthorDelete(PermissionRequiredMixin, DeleteView):
     model=Author
+    permission_required='catalog.can_delete_author'
     success_url=reverse_lazy('authors')
