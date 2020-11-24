@@ -164,3 +164,21 @@ class AuthorDelete(PermissionRequiredMixin, DeleteView):
     model=Author
     permission_required='catalog.can_delete_author'
     success_url=reverse_lazy('authors')
+
+
+# generic editing view(create, update, delete) of Book
+
+class BookCreate(PermissionRequiredMixin, CreateView):
+    model=Book
+    permission_required='catalog.can_create_book'
+    fields='__all__'
+
+class BookUpdate(PermissionRequiredMixin, UpdateView):
+    model=Book
+    permission_required='catalog.can_create_book'
+    fields=['title', 'author', 'summary', 'isbn', 'genre', 'language']
+
+class BookDelete(PermissionRequiredMixin, DeleteView):
+    model=Book
+    permission_required='catalog.can_delete_book'
+    success_url=reverse_lazy('books')
