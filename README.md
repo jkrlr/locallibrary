@@ -1,2 +1,2 @@
 # Local Library management
-A simple django web framework learning project.
+A django web framework learning project.
