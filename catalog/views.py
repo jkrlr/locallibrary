@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from catalog.forms import RenewBookForm
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 # Create your views here.
 
 
@@ -154,3 +154,8 @@ class AuthorCreate(CreateView,PermissionRequiredMixin):
     model = Author
     fields = ['first_name','last_name','date_of_birth','date_of_death']
     initial = {'date_of_death':'11/06/2080'} 
+    
+class AuthorUpdate(UpdateView,PermissionRequiredMixin):
+    permission_required = 'catalog.can_mark_returned'
+    model = Author
+    fields = '__all__'    
