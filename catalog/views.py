@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from catalog.forms import RenewBookForm
-
+from django.views.generic.edit import CreateView
 # Create your views here.
 
 
@@ -145,3 +145,12 @@ def renew_book_librarian(request, pk):
     }
     
     return render(request,'catalog/book_renew_librarian.html',context)
+
+
+
+
+class AuthorCreate(CreateView,PermissionRequiredMixin):
+    permission_required = 'catalog.can_mark_returned'
+    model = Author
+    fields = ['first_name','last_name','date_of_birth','date_of_death']
+    initial = {'date_of_death':'11/06/2080'} 
