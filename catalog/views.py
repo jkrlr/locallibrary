@@ -9,9 +9,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMix
 from django.contrib.auth.decorators import login_required, permission_required
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from catalog.forms import RenewBookForm
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 # Create your views here.
 
 
@@ -159,3 +159,8 @@ class AuthorUpdate(UpdateView,PermissionRequiredMixin):
     permission_required = 'catalog.can_mark_returned'
     model = Author
     fields = '__all__'    
+    
+class AuthorDelete(DeleteView,PermissionRequiredMixin):
+    permission_required = 'catalog.can_mark_returned'
+    model = Author
+    success_url = reverse_lazy('authors')
