@@ -175,3 +175,8 @@ class BookUpdate(UpdateView,PermissionRequiredMixin):
     permission_required = 'catalog.can_mark_returned'
     model = Book
     fields = ['title','author','summary','isbn','genre','language']
+    
+class BookDelete(DeleteView,PermissionRequiredMixin):
+    permission_required = 'catalog.can_mark_returned'
+    model = Book
+    success_url = reverse_lazy('books')
