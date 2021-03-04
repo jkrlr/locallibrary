@@ -29,4 +29,5 @@ urlpatterns+=[
 
 urlpatterns+=[
     path('book/create/',views.BookCreate.as_view(),name='book-create'),
+    path('book/<int:pk>/update/',views.BookUpdate.as_view(),name='book-update'),
 ]
