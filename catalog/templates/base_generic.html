@@ -56,12 +56,10 @@
   </nav>
   {% endblock navbar %}
 
-  <div class="container-fluid">
-    <div class="col-sm-10">
-      {% block content %}
-      {% endblock content %}
-    </div>
+  {% block content %}
+  {% endblock content %}
 
+  <div class="container-fluid">
     {% block pagination %}
     {% if is_paginated %}
     <div class="pagination ml-3">
@@ -79,8 +77,20 @@
     </div>
     {% endif %}
     {% endblock pagination %}
-
   </div>
+
+  {% block footer %}
+  <div class="mt-5">
+    <footer class="footer footer-expand-lg footer-dark bg-dark fixed-bottom">
+      <div class="container text-center">
+        <span class="text-white">
+          LocalLibrary Copyright &copy; {% now 'Y'%}
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  {% endblock footer %}
 </body>
 
 </html>
