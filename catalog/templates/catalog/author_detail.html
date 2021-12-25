@@ -1,16 +1,32 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Author: {{author.last_name}}, {{author.first_name}}</h1>
-
+<div class="container">
+    <h1 class="text-center py-3 pr-5">Author: {{author.last_name}}, {{author.first_name}}</h1>
     <p> {% if author.date_of_birth %}{{author.date_of_birth}}-{% endif %}{% if author.date_of_death %}{{author.date_of_death}}{% endif %}</p>
-    
-    <div style="margin-left: 20px;margin-top: 20px;">
-        <h4>Books</h4>
 
-        {% for copy in author.book_set.all %}
-            <p><strong>{{copy.title}}({{copy.bookinstance_set.imprint}})({{copy.bookinstance_set.count}})</strong></p>
-            <p>{{copy.summary}}</p>
-        {% endfor %}
-    </div>
-{% endblock %}
+    <h5 class="mb-4">Available Books of {{author.last_name}}, {{author.first_name}} in Library</h5>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th class="col-1" scope="col">#</th>
+                <th class="col-3" scope="col">Title</th>
+                <th class="col-2" scope="col">Books Count</th>
+                <th class="col-6" scope="col">Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for copy in author.book_set.all %}
+            <tr class="text-center">
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{copy.title}}</td>
+                <td>{{copy.bookinstance_set.count}}</td>
+                <td>{{copy.summary}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock content %}

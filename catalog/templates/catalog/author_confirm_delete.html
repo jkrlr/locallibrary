@@ -1,11 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
-<h1>Delete Author</h1>
-<p>Are you sure you want to delete the author : {{ author }}?</p>
-<form action="" method="POST">
-    {% csrf_token %}
-    <input type="submit" value="Yes, delete.">
-</form>
+<div class="container">
+    <h1 class="text-center py-3 pr-5">Delete Author</h1>
+    <p class="text-center">Are you sure you want to delete the author : <strong>{{ author }}</strong>?</p>
+    <div class="d-flex justify-content-center mt-3">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <input class="btn btn-outline-danger mr-5" type="submit" value="Yes, delete.">
+        </form>
+    </div>
+</div>
 {% endblock content %}

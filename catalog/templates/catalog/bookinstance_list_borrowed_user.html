@@ -1,19 +1,31 @@
-{% extends 'base_generic.html' %}
+{% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Borrowed Books</h1>
-
+<div class="container">
+    <h1 class="text-center py-3">Borrowed Books</h1>
     {% if bookinstance_list %}
-    <ul>
-
-        {% for bookinst in bookinstance_list %}
-        <li class="{% if bookinst.is_overdue %}text-danger{% endif %}">
-            <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a> ({{ bookinst.due_back }})
-        </li>
-        {% endfor %}
-    </ul>
-
+    <table class="table table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">Book</th>
+                <th scope="col">Due Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bookinst in bookinstance_list %}
+            <tr class="text-center">
+                <th scope="row">{{forloop.counter}}</th>
+                <td>
+                    <a href="{% url 'book-detail' bookinst.book.pk %}">{{bookinst.book.title}}</a>
+                </td>
+                <td><span class="{% if bookinst.is_overdue %}text-danger{% endif %}">{{ bookinst.due_back }}</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
     {% else %}
-        <p>There are no books borrowed.</p>
+    <p class="text-center">You haven't borrowed any book.</p>
     {% endif %}
-{% endblock  %}
+</div>
+{% endblock %}

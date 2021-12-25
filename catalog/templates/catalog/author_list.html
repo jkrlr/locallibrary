@@ -1,16 +1,29 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Author List</h1>
+<div class="container">
+    <h1 class="text-center py-3">Author List</h1>
     {% if author_list %}
-        <ul>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="text-center">
+                <th scope="col">#</th>
+                <th scope="col">LastName</th>
+                <th scope="col">FirstName</th>
+            </tr>
+        </thead>
+        <tbody>
             {% for author in author_list %}
-                <li>
-                    <a href="{{author.get_absolute_url}}">{{ author.last_name }}, {{author.first_name}}</a>
-                </li>
+            <tr class="text-center">
+                <th scope="row">{{forloop.counter}}</th>
+                <td><a href="{{author.get_absolute_url}}">{{ author.last_name }}</a></td>
+                <td>{{author.first_name}}</td>
+            </tr>
             {% endfor %}
-        </ul>
+        </tbody>
+    </table>
     {% else %}
-        <p>There are no author's book in the library.</P>
+    <p class="text-center">There are no author's book in the library.</P>
     {% endif %}
-{% endblock  %}
+</div>
+{% endblock %}

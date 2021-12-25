@@ -1,16 +1,20 @@
 {% extends 'base_generic.html' %}
 
 {% block content %}
-<h1>Local Library Home</h1>
-<p>Welcome to LocalLibrary, a website developed by <em>Mozilla Developer Network<em>!</p>
-<h2>Dynamic content</h2>
-<p>The library has the following records count:</p>
-<ul>
-    <li><strong>Books:</strong> {{ num_books }}</li>
-    <li><strong>Copies:</strong> {{ num_instances }}</li>
-    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
-    <li><strong>Authors:</strong> {{ num_authors }}</li>
-</ul>
-
-<p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
-{% endblock  %}
+<div class="container">
+  <h1 class="text-center py-3">Welcome to LocalLibrary!</h1>
+  <div class="card">
+    <div class="card-header text-center font-weight-bold">
+      The library has the following records count:
+    </div>
+    <div class="card-body row">
+      <p class="card-text col-lg-3">Total Books: {{ num_books }}</p>
+      <p class="card-text col-lg-3">Copies: {{ num_instances }}</p>
+      <p class="card-text col-lg-3">Copies available: {{ num_instances_available }}</p>
+      <p class="card-text col-lg-3">Total Authors: {{ num_authors }}</p>
+    </div>
+  </div>
+  <p class="py-5">You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.
+  </p>
+</div>
+{% endblock content%}
