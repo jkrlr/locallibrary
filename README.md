@@ -10,7 +10,9 @@ The main features that have currently been implemented are:
 - Users can view list and detail information for books and authors.
 - Admin users can create and manage models. The admin has been optimised (the basic registration is present in admin.py, but commented out).
 - Librarians can renew reserved books
-  
+
+- [**Screenshots**](https://github.com/jkrlr/locallibrary/blob/master/screenshots/README-screenshots.md)  
+
 ## Technology Stack
 
 **Frontend:** HTML, CSS(+ Bootstrap 4)  
